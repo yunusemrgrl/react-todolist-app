@@ -1,26 +1,53 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-function Footer({ showElement, setFilteredTodo }) {
+function Footer({
+  showElement,
+  setFilteredTodo,
+  deleteCompleted,
+}) {
   const [filterType, setFilterType] = useState(0);
 
   useEffect(() => {
     if (filterType === 1) {
-      setFilteredTodo(showElement.filter((item) => item.isCompleted === false));
+      setFilteredTodo(
+        showElement.filter(
+          (item) => item.isCompleted === false,
+        ),
+      );
     } else if (filterType === 2) {
-      setFilteredTodo(showElement.filter((item) => item.isCompleted));
+      setFilteredTodo(
+        showElement.filter((item) => item.isCompleted),
+      );
     } else {
       setFilteredTodo(showElement);
     }
-    // console.log(todo)
   }, [filterType, showElement]);
+
+  const handlerDelete = () => {
+    deleteCompleted(
+      showElement.filter((item) => !item.isCompleted),
+    );
+  };
 
   return (
     <>
       {/* <!-- This footer should hidden by default and shown when there are todos --> */}
-      <footer className="footer">
+      <footer
+        className={
+          showElement.length == 0
+            ? 'footer hidden'
+            : 'footer show'
+        }
+      >
         {/* <!-- This should be `0 items left` by default --> */}
         <span className="todo-count">
-          <strong>2</strong>
+          <strong className="item-left">
+            {
+              showElement.filter(
+                (item) => !item.isCompleted,
+              ).length
+            }
+          </strong>
           items left
         </span>
 
@@ -28,7 +55,7 @@ function Footer({ showElement, setFilteredTodo }) {
           <li>
             <a
               onClick={() => setFilterType(0)}
-              className={filterType === 0 ? "selected" : ""}
+              className={filterType === 0 ? 'selected' : ''}
               id="all"
             >
               All
@@ -38,7 +65,7 @@ function Footer({ showElement, setFilteredTodo }) {
             <a
               onClick={() => setFilterType(1)}
               id="active"
-              className={filterType === 1 ? "selected" : ""}
+              className={filterType === 1 ? 'selected' : ''}
             >
               Active
             </a>
@@ -47,15 +74,23 @@ function Footer({ showElement, setFilteredTodo }) {
             <a
               onClick={() => setFilterType(2)}
               id="completed"
-              className={filterType === 2 ? "selected" : ""}
+              className={filterType === 2 ? 'selected' : ''}
             >
               Completed
             </a>
           </li>
         </ul>
 
-        {/* <!-- Hidden if no completed items are left ↓ --> */}
-        <button className="clear-completed">Clear completed</button>
+        <button
+          className={
+            filterType === 1
+              ? 'clear-completed hidden '
+              : 'clear-completed show '
+          }
+          onClick={handlerDelete}
+        >
+          Clear completed
+        </button>
       </footer>
     </>
   );

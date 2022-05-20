@@ -1,6 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
-const setBackDefault = { value: "", id: "", isCompleted: false };
+const setBackDefault = {
+  value: '',
+  id: '',
+  isCompleted: false,
+};
 
 function Form({ setElement, element }) {
   const [form, setForm] = useState(setBackDefault);
@@ -11,16 +15,20 @@ function Form({ setElement, element }) {
   }, [element]);
 
   const handlerChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value, id: id });
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+      id: id,
+    });
   };
 
   const handlerSubmit = (e) => {
     e.preventDefault();
-    if (form.value.trim() == "") {
+    if (form.value.trim() === '') {
       return false;
     }
 
-    setElement([...element, form]); // ***  use "[]" array ****//
+    setElement([form, ...element]); // ***  use "[]" array ****//
   };
 
   return (
