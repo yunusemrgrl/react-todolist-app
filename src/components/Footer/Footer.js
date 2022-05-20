@@ -53,31 +53,31 @@ function Footer({
 
         <ul className="filters">
           <li>
-            <a
+            <span
               onClick={() => setFilterType(0)}
               className={filterType === 0 ? 'selected' : ''}
               id="all"
             >
               All
-            </a>
+            </span>
           </li>
           <li>
-            <a
+            <span
               onClick={() => setFilterType(1)}
               id="active"
               className={filterType === 1 ? 'selected' : ''}
             >
               Active
-            </a>
+            </span>
           </li>
           <li>
-            <a
+            <span
               onClick={() => setFilterType(2)}
               id="completed"
               className={filterType === 2 ? 'selected' : ''}
             >
               Completed
-            </a>
+            </span>
           </li>
         </ul>
 

@@ -303,7 +303,7 @@ body {
   display: inline;
 }
 
-.filters li a {
+.filters span {
   color: inherit;
   margin: 3px;
   padding: 3px 7px;
@@ -313,11 +313,11 @@ body {
   cursor: pointer; /* Because of Mavo: we don't use the href attribute in such situations */
 }
 
-.filters li a:hover {
+.filters span:hover {
   border-color: rgba(175, 47, 47, 0.1);
 }
 
-.filters li a.selected {
+.filters span.selected {
   border-color: rgba(175, 47, 47, 0.2);
 }
 
