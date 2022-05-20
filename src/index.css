@@ -224,6 +224,31 @@ body {
   text-decoration: line-through;
 }
 
+.todo-list li .icon {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 50px;
+  bottom: 0;
+  margin: auto 0;
+  font-size: 20px;
+  color: #cc9a9a;
+  margin-bottom: 11px;
+  transition: color 0.2s ease-out;
+  transform: translateY(-50%);
+}
+
+.todo-list li .icon:hover {
+  color: #af5b5e;
+}
+
+.todo-list li .icon:after {
+  content: '×';
+}
+
+.todo-list li:hover .icon {
+  display: block;
+}
 .todo-list li .destroy {
   display: none;
   position: absolute;

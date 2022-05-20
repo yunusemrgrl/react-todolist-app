@@ -21,7 +21,7 @@ function Footer({
     } else {
       setFilteredTodo(showElement);
     }
-  }, [filterType, showElement]);
+  }, [filterType, showElement, setFilteredTodo]);
 
   const handlerDelete = () => {
     deleteCompleted(
@@ -34,7 +34,7 @@ function Footer({
       {/* <!-- This footer should hidden by default and shown when there are todos --> */}
       <footer
         className={
-          showElement.length == 0
+          showElement.length === 0
             ? 'footer hidden'
             : 'footer show'
         }

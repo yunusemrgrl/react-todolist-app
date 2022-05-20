@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
+
 function List({
   displayElement,
   setDisplayElement,
@@ -14,11 +17,6 @@ function List({
     );
   };
 
-  const deleteButton = (itemId) =>
-    setDisplayElement(
-      displayElement.filter((item) => item.id !== itemId),
-    );
-
   const handlerChange = () => {
     const every = displayElement.every(
       (item) => item.isCompleted === true,
@@ -33,6 +31,18 @@ function List({
         return item;
       }),
     );
+  };
+  const deleteButton = (itemId) =>
+    setDisplayElement(
+      displayElement.filter((item) => item.id !== itemId),
+    );
+
+  const handleEdit = (id) => {
+    displayElement.filter((item) => {
+      if (id === item.id) {
+        console.log(id);
+      }
+    });
   };
 
   return (
@@ -66,6 +76,13 @@ function List({
                 onChange={() => toggleEvent(item.id)}
               />
               <label>{item.value}</label>
+              <div>
+                <FontAwesomeIcon
+                  className="icon"
+                  icon={faEdit}
+                  onClick={() => handleEdit(item.id)}
+                />
+              </div>
               <button
                 onClick={() => deleteButton(item.id)}
                 className="destroy"
