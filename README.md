@@ -1,5 +1,5 @@
 
-## CLICK ---> [OPEN LIVE TODO APP](https://react-basic-todo-app.netlify.app/https://react-basic-todo-app.netlify.app/)
+## CLICK ---> [OPEN LIVE TODO APP](https://react-basic-todo-app.netlify.app)
 
 # Getting Started with Create React App
 
