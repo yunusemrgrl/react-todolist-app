@@ -109,6 +109,26 @@ body {
   box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
 }
 
+.input-edit {
+  position: relative;
+  margin: 0;
+  width: 100%;
+  font-size: 24px;
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: 1.4em;
+  color: inherit;
+  padding: 6px;
+
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.input-edit {
+  border: none;
+}
+
 .main {
   position: relative;
   z-index: 2;
@@ -219,11 +239,19 @@ body {
   transition: color 0.4s;
 }
 
-.todo-list li.completed label {
+.todo-list li label .input-edit {
+  word-break: break-all;
+  display: block;
+  transition: color 0.4s;
+}
+
+.todo-list li.completed label input {
   color: #d9d9d9;
   text-decoration: line-through;
 }
-
+input:disabled {
+  background-color: inherit;
+}
 .todo-list li .icon {
   display: none;
   position: absolute;

@@ -37,13 +37,14 @@ function List({
       displayElement.filter((item) => item.id !== itemId),
     );
 
-  const handleEdit = (id) => {
+  function editItem(id) {
     displayElement.filter((item) => {
       if (id === item.id) {
-        console.log(id);
+        console.log(item);
       }
+      return item;
     });
-  };
+  }
 
   return (
     <section
@@ -75,14 +76,20 @@ function List({
                 checked={item.isCompleted}
                 onChange={() => toggleEvent(item.id)}
               />
-              <label>{item.value}</label>
-              <div>
+              <label>
+                <input
+                  type="text"
+                  className="input-edit"
+                  value={item.value}
+                  disabled
+                />
                 <FontAwesomeIcon
                   className="icon"
                   icon={faEdit}
-                  onClick={() => handleEdit(item.id)}
+                  onClick={() => editItem(item.id)}
                 />
-              </div>
+              </label>
+
               <button
                 onClick={() => deleteButton(item.id)}
                 className="destroy"
